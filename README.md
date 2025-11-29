@@ -109,4 +109,3 @@ This project is open-source and available under the **MIT License**.
 
 ---
 
-Would you like me to format this README with **badges**, **screenshots placeholders**, and a **“Getting Started”** section (for better GitHub presentation)?

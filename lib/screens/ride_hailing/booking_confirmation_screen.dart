@@ -66,12 +66,6 @@ class _BookingConfirmationScreenState extends State<BookingConfirmationScreen> {
     super.dispose();
   }
 
-  String _formatTime(int seconds) {
-    final minutes = seconds ~/ 60;
-    final remainingSeconds = seconds % 60;
-    return '$minutes:${remainingSeconds.toString().padLeft(2, '0')}';
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

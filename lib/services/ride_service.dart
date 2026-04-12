@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class RideService {
   static Future<bool> bookRide({
     required String pickup,

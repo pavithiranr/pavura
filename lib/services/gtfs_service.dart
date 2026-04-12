@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer' as developer;
 import 'package:http/http.dart' as http;
 import 'package:archive/archive.dart';
 
@@ -14,7 +15,7 @@ class GtfsService {
 
     try {
       final url = endpoints[location] ?? endpoints['prasarana_rail']!;
-      print('Fetching GTFS data from: $url');
+      developer.log('Fetching GTFS data from: $url');
       
       final response = await http.get(Uri.parse(url)).timeout(
         const Duration(seconds: 30),
@@ -31,7 +32,7 @@ class GtfsService {
         throw Exception('Failed to fetch GTFS data: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error in fetchTransitData: $e');
+      developer.log('Error in fetchTransitData: $e');
       throw Exception('Error fetching GTFS data: $e');
     }
   }
@@ -88,7 +89,7 @@ class GtfsService {
         return Map<String, dynamic>.fromIterables(headers, values);
       }).toList();
     } catch (e) {
-      print('Error parsing file ${file.name}: $e');
+      developer.log('Error parsing file ${file.name}: $e');
       return [];
     }
   }

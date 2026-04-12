@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:developer' as developer;
 
 class MyGTFSService {
   static const Map<String, List<String>> stationLines = {
@@ -217,7 +218,7 @@ class MyGTFSService {
       
       return schedules;
     } catch (e) {
-      print('Error getting schedule: $e');
+      developer.log('Error getting schedule: $e');
       return [];
     }
   }

@@ -1,3 +1,4 @@
+import 'dart:developer' as developer;
 import 'package:http/http.dart' as http;
 import '../protos/gtfs_realtime.pb.dart';
 
@@ -13,35 +14,36 @@ class PrasaranaApiService {
         },
       );
 
-      print('API Response Status: ${response.statusCode}');
-      print('API Response Body: ${response.bodyBytes}');
+      developer.log('API Response Status: ${response.statusCode}');
+      developer.log('API Response Body: ${response.bodyBytes}');
 
       if (response.statusCode == 200) {
         try {
           final feed = FeedMessage.fromBuffer(response.bodyBytes);
-          return feed.entity.map((entity) {
+          return feed.entity.where((entity) => entity.hasVehicle()).map((entity) {
             final vehicle = entity.vehicle;
+            if (!vehicle.hasPosition()) return null;
             return {
               'id': vehicle.vehicle.id,
               'latitude': vehicle.position.latitude,
               'longitude': vehicle.position.longitude,
               'route': vehicle.trip.routeId,
               'timestamp': DateTime.fromMillisecondsSinceEpoch(
-                vehicle.timestamp.toInt() * 1000
+                (vehicle.timestamp).toInt() * 1000
               ).toIso8601String(),
               'speed': vehicle.position.speed,
               'bearing': vehicle.position.bearing,
             };
-          }).toList();
+          }).whereType<Map<String, dynamic>>().toList();
         } catch (e) {
-          print('Error parsing protobuf: $e');
+          developer.log('Error parsing protobuf: $e');
           throw Exception('Protobuf parsing failed');
         }
       } else {
         throw Exception('Failed to fetch bus positions: ${response.statusCode}');
       }
     } catch (e) {
-      print('Error fetching bus positions: $e');
+      developer.log('Error fetching bus positions: $e');
       // Fallback to mock data if API fails
       return [
         {

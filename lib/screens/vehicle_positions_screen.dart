@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/gtfs_realtime_service.dart';
-import '../protos/gtfs-realtime.pb.dart';
+import '../protos/gtfs_realtime.pb.dart';
 
 class VehiclePositionsScreen extends StatefulWidget {
   const VehiclePositionsScreen({super.key});

@@ -67,7 +67,7 @@ class _RideHailingScreenState extends State<RideHailingScreen> {
     final isSelected = _selectedRideType == rideType['name'];
     return Card(
       elevation: isSelected ? 4 : 1,
-      color: isSelected ? Theme.of(context).primaryColor.withOpacity(0.1) : Colors.white,
+      color: isSelected ? Theme.of(context).primaryColor.withValues(alpha: 0.1) : Colors.white,
       child: InkWell(
         onTap: () => setState(() => _selectedRideType = rideType['name']),
         child: Padding(

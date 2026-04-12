@@ -1,5 +1,4 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
+import 'dart:developer' as developer;
 import 'prasarana_api_service.dart';
 
 class BusTrackingService {
@@ -9,7 +8,7 @@ class BusTrackingService {
     try {
       return await _api.fetchBusPositions();
     } catch (e) {
-      print('Error fetching bus positions: $e');
+      developer.log('Error fetching bus positions: $e');
       // Fallback to mock data if API fails
       return [
         {
@@ -55,7 +54,7 @@ class BusTrackingService {
         },
       ];
     } catch (e) {
-      print('Error fetching bus schedule: $e');
+      developer.log('Error fetching bus schedule: $e');
       return [];
     }
   }

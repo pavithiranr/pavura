@@ -1,7 +1,7 @@
 $protocPath = "C:\Users\USER\protoc\bin\protoc.exe"
 $projectRoot = $PSScriptRoot
 $protoPath = Join-Path $projectRoot "lib\protos"
-$outputPath = Join-Path $projectRoot "lib\generated"
+$outputPath = Join-Path $projectRoot "lib\protos"
 
 # Create output directory if it doesn't exist
 if (-not (Test-Path $outputPath)) {

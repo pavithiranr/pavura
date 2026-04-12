@@ -1,5 +1,6 @@
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'dart:developer' as developer;
 import 'permission_handler_service.dart';
 
 class LocationService {
@@ -17,7 +18,7 @@ class LocationService {
           desiredAccuracy: LocationAccuracy.high,
         );
       } catch (e) {
-        print('Error getting location: $e');
+        developer.log('Error getting location: $e');
         return null;
       }
     }

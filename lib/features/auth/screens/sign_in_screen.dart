@@ -49,17 +49,17 @@ class _SignInScreenState extends State<SignInScreen> {
           Positioned(
             top: -50,
             left: -50,
-            child: _buildCircle(200, Colors.white.withOpacity(0.08)),
+            child: _buildCircle(200, Colors.white.withValues(alpha: 0.08)),
           ),
           Positioned(
             top: 100,
             right: -80,
-            child: _buildCircle(180, Colors.white.withOpacity(0.08)),
+            child: _buildCircle(180, Colors.white.withValues(alpha: 0.08)),
           ),
           Positioned(
             bottom: -60,
             left: -40,
-            child: _buildCircle(220, Colors.white.withOpacity(0.08)),
+            child: _buildCircle(220, Colors.white.withValues(alpha: 0.08)),
           ),
 
           SafeArea(
@@ -75,7 +75,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       width: 80,
                       height: 80,
                       decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0),
+                        color: Colors.white.withValues(alpha: 0),
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
@@ -105,7 +105,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: Colors.white.withOpacity(0.8),
+                      color: Colors.white.withValues(alpha: 0.8),
                     ),
                   ),
                   const SizedBox(height: 40),
@@ -215,7 +215,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       Expanded(
                         child: Divider(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           thickness: 1,
                         ),
                       ),
@@ -232,7 +232,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       Expanded(
                         child: Divider(
-                          color: Colors.white.withOpacity(0.2),
+                          color: Colors.white.withValues(alpha: 0.2),
                           thickness: 1,
                         ),
                       ),
@@ -357,7 +357,7 @@ class _SignInScreenState extends State<SignInScreen> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: Colors.black.withValues(alpha: 0.1),
             blurRadius: 8,
             offset: const Offset(0, 2),
           ),

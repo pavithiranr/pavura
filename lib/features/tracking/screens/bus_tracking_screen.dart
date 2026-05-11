@@ -100,8 +100,8 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: AppTheme.primary.withOpacity(
-                                      1 - _pulseController.value,
+                                    color: AppTheme.primary.withValues(
+                                      alpha: 1 - _pulseController.value,
                                     ),
                                     width: 2,
                                   ),
@@ -214,7 +214,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                               fontWeight: FontWeight.w400,
                               color:
                                   isSelected
-                                      ? AppTheme.white.withOpacity(0.8)
+                                      ? AppTheme.white.withValues(alpha: 0.8)
                                       : AppTheme.grey600,
                             ),
                           ),
@@ -228,7 +228,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                               color:
                                   isSelected
                                       ? AppTheme.white
-                                      : AppTheme.success.withOpacity(0.1),
+                                      : AppTheme.success.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(
@@ -317,8 +317,8 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                     decoration: BoxDecoration(
                       color:
                           currentBus['status'] == 'On Time'
-                              ? AppTheme.success.withOpacity(0.1)
-                              : AppTheme.orange.withOpacity(0.1),
+                              ? AppTheme.success.withValues(alpha: 0.1)
+                              : AppTheme.orange.withValues(alpha: 0.1),
                       border: Border.all(
                         color:
                             currentBus['status'] == 'On Time'

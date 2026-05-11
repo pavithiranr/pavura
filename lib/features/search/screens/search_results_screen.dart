@@ -126,7 +126,7 @@ class _SearchResultsScreenState extends State<SearchResultsScreen> {
                             vertical: 6,
                           ),
                           decoration: BoxDecoration(
-                            color: AppTheme.primary.withOpacity(0.1),
+                          color: AppTheme.primary.withValues(alpha: 0.1),
                             borderRadius: BorderRadius.circular(AppRadius.sm),
                           ),
                           child: Text(
@@ -376,7 +376,7 @@ class _ResultCard extends StatelessWidget {
                     SizedBox(
                       width: 80,
                       child: Divider(
-                        color: AppTheme.primary.withOpacity(0.3),
+                        color: AppTheme.primary.withValues(alpha: 0.3),
                         thickness: 1,
                       ),
                     ),

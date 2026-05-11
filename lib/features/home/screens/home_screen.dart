@@ -67,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     style: GoogleFonts.poppins(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
-                      color: AppTheme.white.withOpacity(0.9),
+                      color: AppTheme.white.withValues(alpha: 0.9),
                     ),
                   ),
                 ],
@@ -209,7 +209,7 @@ class _FeatureItem extends StatelessWidget {
             width: 40,
             height: 40,
             decoration: BoxDecoration(
-              color: AppTheme.primary.withOpacity(0.1),
+              color: AppTheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(icon, color: AppTheme.primary, size: 20),

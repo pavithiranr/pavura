@@ -31,7 +31,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-  Future<void> _handleSignUp(BuildContext context) async {
+  Future<void> _handleSignUp() async {
     // Validate form
     if (!_formKey.currentState!.validate()) {
       return;
@@ -255,7 +255,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     label: 'Create Account',
                     onPressed:
                         !authProvider.isLoading
-                            ? () => _handleSignUp(context)
+                            ? () => _handleSignUp()
                             : () {},
                     isLoading: authProvider.isLoading,
                     width: double.infinity,

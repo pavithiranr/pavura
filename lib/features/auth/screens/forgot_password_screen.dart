@@ -21,7 +21,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     super.dispose();
   }
 
-  Future<void> _handleResetPassword(BuildContext context) async {
+  Future<void> _handleResetPassword() async {
     if (_emailController.text.isEmpty) {
       ScaffoldMessenger.of(
         context,
@@ -150,7 +150,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     onPressed:
                         authProvider.isLoading
                             ? null
-                            : () => _handleResetPassword(context),
+                            : () => _handleResetPassword(),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppTheme.primary,
                       shape: RoundedRectangleBorder(

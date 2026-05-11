@@ -25,7 +25,7 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
-  Future<void> _handleSignIn(BuildContext context) async {
+  Future<void> _handleSignIn() async {
     // Validate inputs
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -211,7 +211,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           onPressed:
                               authProvider.isLoading
                                   ? null
-                                  : () => _handleSignIn(context),
+                                  : () => _handleSignIn(),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: const StadiumBorder(),

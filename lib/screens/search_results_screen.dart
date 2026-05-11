@@ -14,9 +14,7 @@ class SearchResultsScreen extends StatelessWidget {
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Search Results'),
-      ),
+      appBar: AppBar(title: const Text('Search Results')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -34,7 +32,9 @@ class SearchResultsScreen extends StatelessWidget {
                   final routeDetails = 'Route ${index + 1}';
                   return ListTile(
                     title: Text(routeDetails),
-                    subtitle: Text('Estimated Time: ${index * 15 + 30} minutes'),
+                    subtitle: Text(
+                      'Estimated Time: ${index * 15 + 30} minutes',
+                    ),
                     trailing: ElevatedButton(
                       onPressed: () {
                         // Example route coordinates, replace with actual data
@@ -46,10 +46,11 @@ class SearchResultsScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (final context) => RouteTrackingScreen(
-                              routeDetails: routeDetails,
-                              routeCoordinates: routeCoordinates,
-                            ),
+                            builder:
+                                (final context) => RouteTrackingScreen(
+                                  routeDetails: routeDetails,
+                                  routeCoordinates: routeCoordinates,
+                                ),
                           ),
                         );
                       },
@@ -88,30 +89,27 @@ class _RouteTrackingScreenState extends State<RouteTrackingScreen> {
     // Check if the coordinates are valid
     if (widget.routeCoordinates.isEmpty) {
       return Scaffold(
-        appBar: AppBar(
-          title: Text('Route Tracking - ${widget.routeDetails}'),
-        ),
-        body: const Center(
-          child: Text('No route data available to display.'),
-        ),
+        appBar: AppBar(title: Text('Route Tracking - ${widget.routeDetails}')),
+        body: const Center(child: Text('No route data available to display.')),
       );
     }
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Route Tracking - ${widget.routeDetails}'),
-      ),
+      appBar: AppBar(title: Text('Route Tracking - ${widget.routeDetails}')),
       body: GoogleMap(
         initialCameraPosition: CameraPosition(
           target: widget.routeCoordinates.first,
           zoom: 12.0,
         ),
-        markers: widget.routeCoordinates
-            .map((final coord) => Marker(
-                  markerId: MarkerId(coord.toString()),
-                  position: coord,
-                ),)
-            .toSet(),
+        markers:
+            widget.routeCoordinates
+                .map(
+                  (final coord) => Marker(
+                    markerId: MarkerId(coord.toString()),
+                    position: coord,
+                  ),
+                )
+                .toSet(),
         polylines: {
           Polyline(
             polylineId: const PolylineId('route'),

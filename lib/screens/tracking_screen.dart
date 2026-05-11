@@ -16,9 +16,7 @@ class _TrackingScreenState extends State<TrackingScreen> {
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Passenger Tracking'),
-      ),
+      appBar: AppBar(title: const Text('Passenger Tracking')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -28,19 +26,17 @@ class _TrackingScreenState extends State<TrackingScreen> {
             children: [
               TextFormField(
                 controller: _nameController,
-                decoration: const InputDecoration(
-                  labelText: 'Name',
-                ),
-                validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+                decoration: const InputDecoration(labelText: 'Name'),
+                validator:
+                    (final value) => value?.isEmpty ?? true ? 'Required' : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
                 controller: _phoneController,
-                decoration: const InputDecoration(
-                  labelText: 'Phone',
-                ),
+                decoration: const InputDecoration(labelText: 'Phone'),
                 keyboardType: TextInputType.phone,
-                validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+                validator:
+                    (final value) => value?.isEmpty ?? true ? 'Required' : null,
               ),
               const SizedBox(height: 16),
               TextFormField(
@@ -48,7 +44,8 @@ class _TrackingScreenState extends State<TrackingScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Current Location',
                 ),
-                validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+                validator:
+                    (final value) => value?.isEmpty ?? true ? 'Required' : null,
               ),
               const SizedBox(height: 24),
               ElevatedButton(

@@ -77,7 +77,7 @@ class RouteTrackingScreen extends StatefulWidget {
   });
 
   @override
-  _RouteTrackingScreenState createState() => _RouteTrackingScreenState();
+  State<RouteTrackingScreen> createState() => _RouteTrackingScreenState();
 }
 
 class _RouteTrackingScreenState extends State<RouteTrackingScreen> {

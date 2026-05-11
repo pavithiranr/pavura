@@ -166,7 +166,9 @@ class _RideHailingScreenState extends State<RideHailingScreen> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                onPressed: _pickupLocation.isNotEmpty && _dropoffLocation.isNotEmpty                    ? () async {
+                onPressed: _pickupLocation.isNotEmpty && _dropoffLocation.isNotEmpty
+                    ? () async {
+                        final context = this.context;
                         final success = await RideService.bookRide(
                           pickup: _pickupLocation,
                           dropoff: _dropoffLocation,

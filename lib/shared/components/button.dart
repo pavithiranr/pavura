@@ -245,7 +245,7 @@ class ModernCard extends StatelessWidget {
               showBorder ? Border.all(color: AppTheme.grey300, width: 1) : null,
           boxShadow: [
             BoxShadow(
-              color: AppTheme.black.withOpacity(0.08),
+              color: AppTheme.black.withValues(alpha: 0.08),
               blurRadius: 12,
               offset: const Offset(0, 4),
             ),

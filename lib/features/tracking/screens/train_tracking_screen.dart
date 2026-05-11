@@ -186,7 +186,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                       Container(
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: AppTheme.primary.withOpacity(0.1),
+                          color: AppTheme.primary.withValues(alpha: 0.1),
                           border: Border.all(color: AppTheme.primary),
                           borderRadius: BorderRadius.circular(AppRadius.md),
                         ),

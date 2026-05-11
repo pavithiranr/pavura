@@ -266,8 +266,8 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                                   isSelected
                                       ? AppTheme.white
                                       : train['status'] == 'On Time'
-                                      ? AppTheme.success.withOpacity(0.1)
-                                      : AppTheme.orange.withOpacity(0.1),
+                                      ? AppTheme.success.withValues(alpha: 0.1)
+                                      : AppTheme.orange.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(4),
                             ),
                             child: Text(

@@ -6,7 +6,7 @@ class VehiclePositionsScreen extends StatefulWidget {
   const VehiclePositionsScreen({super.key});
 
   @override
-  _VehiclePositionsScreenState createState() => _VehiclePositionsScreenState();
+  State<VehiclePositionsScreen> createState() => _VehiclePositionsScreenState();
 }
 
 class _VehiclePositionsScreenState extends State<VehiclePositionsScreen> {
@@ -39,46 +39,56 @@ class _VehiclePositionsScreenState extends State<VehiclePositionsScreen> {
   @override
   Widget build(final BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Vehicle Positions'),
-      ),
-      body: _isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : _error.isNotEmpty
+      appBar: AppBar(title: const Text('Vehicle Positions')),
+      body:
+          _isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : _error.isNotEmpty
               ? Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Icon(Icons.error, color: Colors.red, size: 50),
-                      const SizedBox(height: 10),
-                      Text('Error: $_error',
-                          style: const TextStyle(fontSize: 16, color: Colors.red),),
-                    ],
-                  ),
-                )
-              : _vehiclePositions.isEmpty
-                  ? const Center(
-                      child: Text(
-                        'No vehicle data available',
-                        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    )
-                  : ListView.builder(
-                      itemCount: _vehiclePositions.length,
-                      itemBuilder: (final context, final index) {
-                        final entity = _vehiclePositions[index];
-                        return Card(
-                          margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                          child: ListTile(
-                            leading: const Icon(Icons.directions_transit, color: Colors.blue),
-                            title: Text('Vehicle ID: ${entity.vehicle.vehicle.id}',
-                                style: const TextStyle(fontWeight: FontWeight.bold),),
-                            subtitle: Text(
-                                'Lat: ${entity.vehicle.position.latitude}, Lng: ${entity.vehicle.position.longitude}',),
-                          ),
-                        );
-                      },
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(Icons.error, color: Colors.red, size: 50),
+                    const SizedBox(height: 10),
+                    Text(
+                      'Error: $_error',
+                      style: const TextStyle(fontSize: 16, color: Colors.red),
                     ),
+                  ],
+                ),
+              )
+              : _vehiclePositions.isEmpty
+              ? const Center(
+                child: Text(
+                  'No vehicle data available',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+              )
+              : ListView.builder(
+                itemCount: _vehiclePositions.length,
+                itemBuilder: (final context, final index) {
+                  final entity = _vehiclePositions[index];
+                  return Card(
+                    margin: const EdgeInsets.symmetric(
+                      vertical: 8,
+                      horizontal: 16,
+                    ),
+                    child: ListTile(
+                      leading: const Icon(
+                        Icons.directions_transit,
+                        color: Colors.blue,
+                      ),
+                      title: Text(
+                        'Vehicle ID: ${entity.vehicle.vehicle.id}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Text(
+                        'Lat: ${entity.vehicle.position.latitude}, Lng: ${entity.vehicle.position.longitude}',
+                      ),
+                    ),
+                  );
+                },
+              ),
     );
   }
 }

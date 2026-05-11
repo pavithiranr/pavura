@@ -268,7 +268,10 @@ class _VehicleCard extends StatelessWidget {
       margin: const EdgeInsets.only(bottom: 12),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: isSelected ? AppTheme.primary.withOpacity(0.1) : AppTheme.white,
+        color:
+            isSelected
+                ? AppTheme.primary.withValues(alpha: 0.1)
+                : AppTheme.white,
         border: Border.all(
           color: isSelected ? AppTheme.primary : AppTheme.grey300,
           width: isSelected ? 2 : 1,
@@ -332,7 +335,7 @@ class _VehicleCard extends StatelessWidget {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                 decoration: BoxDecoration(
-                  color: AppTheme.success.withOpacity(0.1),
+                  color: AppTheme.success.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: Text(

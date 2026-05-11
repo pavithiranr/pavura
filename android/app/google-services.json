@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "912472454203",
+    "project_id": "pavura",
+    "storage_bucket": "pavura.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:912472454203:android:cc92120e707948ff04d81e",
+        "android_client_info": {
+          "package_name": "com.example.passenger_transportation_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiJNr_q6PebXD1rKFU6h0deUm1V-N-lq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import '../generated/passenger.pb.dart';
+// import '../generated/passenger.pb.dart'; // TODO: Re-enable when passenger.proto is implemented
 import '../services/passenger_service.dart';
-import 'package:fixnum/fixnum.dart';
 
 class PassengerForm extends StatefulWidget {
-  final Function(Passenger) onPassengerTracked;
+  final Function(dynamic) onPassengerTracked;
 
   const PassengerForm({super.key, required this.onPassengerTracked});
 
   @override
-  _PassengerFormState createState() => _PassengerFormState();
+  State<PassengerForm> createState() => _PassengerFormState();
 }
 
 class _PassengerFormState extends State<PassengerForm> {
@@ -21,58 +20,50 @@ class _PassengerFormState extends State<PassengerForm> {
   final _service = PassengerTrackingService();
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Form(
       key: _formKey,
       child: Column(
         children: [
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              'Passenger tracking is coming soon!\nThis feature requires proto implementation.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.grey),
+            ),
+          ),
           TextFormField(
             controller: _nameController,
             decoration: const InputDecoration(labelText: 'Name'),
-            validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+            validator: (value) => value?.isEmpty ?? true ? 'Required' : null,
+            enabled: false,
           ),
           TextFormField(
             controller: _phoneController,
             decoration: const InputDecoration(labelText: 'Phone'),
-            validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+            validator: (value) => value?.isEmpty ?? true ? 'Required' : null,
+            enabled: false,
           ),
           TextFormField(
             controller: _locationController,
             decoration: const InputDecoration(labelText: 'Current Location'),
-            validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+            validator: (value) => value?.isEmpty ?? true ? 'Required' : null,
+            enabled: false,
           ),
           TextFormField(
             controller: _destinationController,
             decoration: const InputDecoration(labelText: 'Destination'),
-            validator: (final value) => value?.isEmpty ?? true ? 'Required' : null,
+            validator: (value) => value?.isEmpty ?? true ? 'Required' : null,
+            enabled: false,
           ),
           ElevatedButton(
-            onPressed: _submitForm,
-            child: const Text('Track Passenger'),
+            onPressed: null,
+            child: const Text('Track Passenger (Coming Soon)'),
           ),
         ],
       ),
     );
-  }
-
-  void _submitForm() async {
-    if (_formKey.currentState?.validate() ?? false) {
-      final passenger = Passenger()
-        ..id = DateTime.now().millisecondsSinceEpoch.toString()
-        ..name = _nameController.text
-        ..phoneNumber = _phoneController.text
-        ..currentLocation = _locationController.text
-        ..timestamp = Int64(DateTime.now().millisecondsSinceEpoch);
-
-      try {
-        final trackedPassenger = await _service.trackPassenger(passenger);
-        widget.onPassengerTracked(trackedPassenger);
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: $e')),
-        );
-      }
-    }
   }
 
   @override

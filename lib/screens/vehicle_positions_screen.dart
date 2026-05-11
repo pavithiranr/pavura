@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../services/gtfs_realtime_service.dart';
-import '../protos/gtfs_realtime.pb.dart';
+// import '../protos/gtfs_realtime.pb.dart'; // TODO: Re-enable when vehicle tracking is implemented
 
 class VehiclePositionsScreen extends StatefulWidget {
   const VehiclePositionsScreen({super.key});
@@ -11,7 +11,7 @@ class VehiclePositionsScreen extends StatefulWidget {
 
 class _VehiclePositionsScreenState extends State<VehiclePositionsScreen> {
   final GtfsRealtimeService _service = GtfsRealtimeService();
-  List<FeedEntity> _vehiclePositions = [];
+  List<dynamic> _vehiclePositions = [];
   bool _isLoading = true;
   String _error = '';
 

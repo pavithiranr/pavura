@@ -1,6 +1,6 @@
 import 'dart:developer' as developer;
 import 'package:http/http.dart' as http;
-import '../protos/gtfs_realtime.pb.dart';
+// import '../protos/gtfs_realtime.pb.dart'; // TODO: Re-enable when Prasarana real-time is implemented
 
 class PrasaranaApiService {
   static const String baseUrl = 'https://api.data.gov.my/gtfs-realtime/vehicle-position/prasarana';
@@ -19,6 +19,8 @@ class PrasaranaApiService {
 
       if (response.statusCode == 200) {
         try {
+          // TODO: Re-enable protobuf parsing when gtfs_realtime.pb.dart is available
+          /*
           final feed = FeedMessage.fromBuffer(response.bodyBytes);
           return feed.entity.where((entity) => entity.hasVehicle()).map((entity) {
             final vehicle = entity.vehicle;
@@ -35,6 +37,8 @@ class PrasaranaApiService {
               'bearing': vehicle.position.bearing,
             };
           }).whereType<Map<String, dynamic>>().toList();
+          */
+          throw UnimplementedError('Protobuf parsing requires gtfs_realtime.pb.dart');
         } catch (e) {
           developer.log('Error parsing protobuf: $e');
           throw Exception('Protobuf parsing failed');

@@ -123,10 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ElevatedButton.icon(
                 onPressed: () => Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (_) => TrainScheduleScreen(
-                    start: _startController.text,
-                    destination: _destinationController.text,
-                  ),),
+                  MaterialPageRoute(
+                    builder: (_) => TrainScheduleScreen(
+                      initialStart: _startController.text,
+                      initialDestination: _destinationController.text,
+                    ),
+                  ),
                 ),
                 icon: const Icon(Icons.train),
                 label: const Text('Train Schedule & Location'),

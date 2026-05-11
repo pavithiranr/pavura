@@ -1,10 +1,11 @@
 import 'dart:developer' as developer;
-import 'package:http/http.dart' as http;
-import '../protos/gtfs_realtime.pb.dart';
+// import '../protos/gtfs_realtime.pb.dart'; // TODO: Re-enable when real-time tracking is implemented
 
 class TrainRealtimeService {
   final String baseUrl = 'https://api.data.gov.my/gtfs-realtime/vehicle-position/ktmb';
 
+  // TODO: Re-enable when gtfs_realtime.pb.dart is available
+  /*
   Future<List<FeedEntity>> fetchTrainPositions() async {
     try {
       final response = await http.get(Uri.parse(baseUrl));
@@ -31,5 +32,11 @@ class TrainRealtimeService {
       developer.log('Error fetching train positions: $e');
       throw Exception('Error fetching train positions: $e');
     }
+  }
+  */
+
+  Future<List<dynamic>> fetchTrainPositions() async {
+    developer.log('Train real-time tracking not yet implemented');
+    throw UnimplementedError('Train tracking requires gtfs_realtime.pb.dart proto definitions');
   }
 }

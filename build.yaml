@@ -1,0 +1,9 @@
+targets:
+  $default:
+    builders:
+      protoc_plugin:
+        options:
+          # Output dart files to lib directory
+          generation_options:
+            - grpc
+          out_dir: lib

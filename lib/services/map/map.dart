@@ -16,8 +16,8 @@ class MapService {
   }) {
     return FlutterMap(
       options: MapOptions(
-        center: center,
-        zoom: zoom,
+        initialCenter: center,
+        initialZoom: zoom,
         maxZoom: 18.0,
       ),
       children: [
@@ -41,7 +41,7 @@ class MapService {
       point: position,
       width: 80,
       height: 80,
-      builder: (context) => Column(
+      child: Column(
         children: [
           Icon(Icons.location_on, color: color, size: 30),
           Container(

@@ -5,7 +5,7 @@ import 'location_search_screen.dart';
 
 class RideHailingScreen extends StatefulWidget {
   final String? destination;
-  
+
   const RideHailingScreen({super.key, this.destination});
 
   @override
@@ -67,7 +67,10 @@ class _RideHailingScreenState extends State<RideHailingScreen> {
     final isSelected = _selectedRideType == rideType['name'];
     return Card(
       elevation: isSelected ? 4 : 1,
-      color: isSelected ? Theme.of(context).primaryColor.withValues(alpha: 0.1) : Colors.white,
+      color:
+          isSelected
+              ? Theme.of(context).primaryColor.withValues(alpha: 0.1)
+              : Colors.white,
       child: InkWell(
         onTap: () => setState(() => _selectedRideType = rideType['name']),
         child: Padding(
@@ -110,7 +113,8 @@ class _RideHailingScreenState extends State<RideHailingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(      appBar: AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: const Text(
           'Grab',
           style: TextStyle(
@@ -128,7 +132,8 @@ class _RideHailingScreenState extends State<RideHailingScreen> {
           Container(
             color: Colors.white,
             child: Column(
-              children: [                _buildLocationField('Pickup', _pickupLocation, () async {
+              children: [
+                _buildLocationField('Pickup', _pickupLocation, () async {
                   final result = await Navigator.push<String>(
                     context,
                     MaterialPageRoute(
@@ -159,35 +164,41 @@ class _RideHailingScreenState extends State<RideHailingScreen> {
             child: ListView.builder(
               padding: const EdgeInsets.all(16),
               itemCount: _rideTypes.length,
-              itemBuilder: (context, index) => _buildRideTypeCard(_rideTypes[index]),
+              itemBuilder:
+                  (context, index) => _buildRideTypeCard(_rideTypes[index]),
             ),
           ),
           SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: ElevatedButton(
-                onPressed: _pickupLocation.isNotEmpty && _dropoffLocation.isNotEmpty
-                    ? () async {
-                        final context = this.context;
-                        final success = await RideService.bookRide(
-                          pickup: _pickupLocation,
-                          dropoff: _dropoffLocation,
-                          rideType: _selectedRideType,
-                        );
-                        if (mounted && success) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => BookingConfirmationScreen(
-                                bookingId: DateTime.now().millisecondsSinceEpoch.toString(),
-                                pickupLocation: _pickupLocation,
-                                dropoffLocation: _dropoffLocation,
-                              ),
-                            ),
+                onPressed:
+                    _pickupLocation.isNotEmpty && _dropoffLocation.isNotEmpty
+                        ? () async {
+                          final context = this.context;
+                          final success = await RideService.bookRide(
+                            pickup: _pickupLocation,
+                            dropoff: _dropoffLocation,
+                            rideType: _selectedRideType,
                           );
+                          if (context.mounted && success) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder:
+                                    (context) => BookingConfirmationScreen(
+                                      bookingId:
+                                          DateTime.now().millisecondsSinceEpoch
+                                              .toString(),
+                                      pickupLocation: _pickupLocation,
+                                      dropoffLocation: _dropoffLocation,
+                                    ),
+                              ),
+                            );
+                          }
                         }
-                      }
-                    : null,                style: ElevatedButton.styleFrom(
+                        : null,
+                style: ElevatedButton.styleFrom(
                   backgroundColor: grabGreen,
                   foregroundColor: Colors.white,
                   minimumSize: const Size(double.infinity, 50),

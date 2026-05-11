@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import '../../../core/theme/app_theme.dart';
+import '../providers/auth_provider.dart';
+import 'sign_up_screen.dart';
+import 'forgot_password_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
@@ -11,7 +15,6 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool _isPasswordVisible = false;
-  bool _isLoading = false;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -22,7 +25,8 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
-  void _handleSignIn() {
+  Future<void> _handleSignIn(BuildContext context) async {
+    // Validate inputs
     if (_emailController.text.isEmpty || _passwordController.text.isEmpty) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please fill in all fields')),
@@ -30,13 +34,38 @@ class _SignInScreenState extends State<SignInScreen> {
       return;
     }
 
-    setState(() => _isLoading = true);
-    Future.delayed(const Duration(seconds: 1), () {
-      if (mounted) {
-        setState(() => _isLoading = false);
+    // Validate email format
+    if (!_isValidEmail(_emailController.text)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Please enter a valid email')),
+      );
+      return;
+    }
+
+    // Perform sign in
+    final authProvider = context.read<AuthProvider>();
+    final success = await authProvider.signIn(
+      email: _emailController.text.trim(),
+      password: _passwordController.text,
+    );
+
+    if (mounted) {
+      if (success) {
         Navigator.of(context).pushReplacementNamed('/home');
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(authProvider.errorMessage ?? 'Sign in failed'),
+          ),
+        );
       }
-    });
+    }
+  }
+
+  bool _isValidEmail(String email) {
+    return RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    ).hasMatch(email);
   }
 
   @override
@@ -79,7 +108,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         shape: BoxShape.circle,
                       ),
                       child: Image.asset(
-                        'images/Pavura_logo.png',
+                        'assets/images/Pavura_logo.png',
                         width: 60,
                         height: 60,
                         fit: BoxFit.contain,
@@ -151,7 +180,14 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const ForgotPasswordScreen(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Forgot Password?',
                           style: GoogleFonts.poppins(
@@ -165,48 +201,58 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   const SizedBox(height: 28),
 
-                  // Sign In Button
-                  SizedBox(
-                    width: double.infinity,
-                    height: 52,
-                    child: ElevatedButton(
-                      onPressed: _isLoading ? null : _handleSignIn,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.white,
-                        shape: const StadiumBorder(),
-                        elevation: 0,
-                      ),
-                      child:
-                          _isLoading
-                              ? SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator(
-                                  strokeWidth: 2,
-                                  valueColor: AlwaysStoppedAnimation(
-                                    AppTheme.primary,
-                                  ),
-                                ),
-                              )
-                              : Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    'Sign In',
-                                    style: GoogleFonts.poppins(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                      color: AppTheme.primary,
+                  // Sign In Button with loading state
+                  Consumer<AuthProvider>(
+                    builder: (context, authProvider, _) {
+                      return SizedBox(
+                        width: double.infinity,
+                        height: 52,
+                        child: ElevatedButton(
+                          onPressed:
+                              authProvider.isLoading
+                                  ? null
+                                  : () => _handleSignIn(context),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: const StadiumBorder(),
+                            elevation: 0,
+                            disabledBackgroundColor: Colors.white.withValues(
+                              alpha: 0.5,
+                            ),
+                          ),
+                          child:
+                              authProvider.isLoading
+                                  ? SizedBox(
+                                    width: 20,
+                                    height: 20,
+                                    child: CircularProgressIndicator(
+                                      strokeWidth: 2,
+                                      valueColor: AlwaysStoppedAnimation(
+                                        AppTheme.primary,
+                                      ),
                                     ),
+                                  )
+                                  : Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        'Sign In',
+                                        style: GoogleFonts.poppins(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w600,
+                                          color: AppTheme.primary,
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Icon(
+                                        Icons.arrow_forward,
+                                        color: AppTheme.primary,
+                                      ),
+                                    ],
                                   ),
-                                  const SizedBox(width: 12),
-                                  Icon(
-                                    Icons.arrow_forward,
-                                    color: AppTheme.primary,
-                                  ),
-                                ],
-                              ),
-                    ),
+                        ),
+                      );
+                    },
                   ),
                   const SizedBox(height: 40),
 
@@ -266,7 +312,14 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (_) => const SignUpScreen(),
+                            ),
+                          );
+                        },
                         child: Text(
                           'Sign Up',
                           style: GoogleFonts.poppins(

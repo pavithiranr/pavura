@@ -41,6 +41,9 @@ dependencies:
   intl: ^0.19.0
   archive: ^3.4.0
   grpc: ^3.2.4
+  gtfs_realtime_bindings: ^1.1.0
+  shared_preferences: ^2.3.5
+  flutter_map_cancellable_tile_provider: ^2.0.0
 
 dev_dependencies:
   flutter_test:
@@ -51,3 +54,5 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/images/train_logos/
+    - assets/gtfs_rapid_rail_kl/

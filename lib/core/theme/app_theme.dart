@@ -3,9 +3,15 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Colors
-  static const Color primary = Color(0xFF2C6E49);
-  static const Color primaryDark = Color(0xFF1B4D31);
-  static const Color secondary = Color(0xFF10B981);
+  static const Color primary = Color(0xFF2D5A3F);
+  static const Color primaryDark = Color(0xFF1B3B29);
+  static const Color secondary = Color(0xFFD9D9D9);
+  static const Color pavuraGreen = Color(0xFF2D5A3F);
+  static const Color pavuraPeach = Color(0xFFD9D9D9);
+  static const Color pavuraCharcoal = Color(0xFF3B2F2F);
+  static const Color pavuraBrown = Color(0xFF4A321F);
+  static const Color pavuraBgDark = Color(0xFF2D5A3F);
+  
   static const Color success = Color(0xFF10B981);
   static const Color error = Color(0xFFFB7185);
   static const Color warning = Color(0xFFFABD02);
@@ -39,7 +45,7 @@ class AppTheme {
         backgroundColor: white,
         elevation: 0,
         centerTitle: false,
-        titleTextStyle: GoogleFonts.poppins(
+        titleTextStyle: GoogleFonts.urbanist(
           fontSize: 20,
           fontWeight: FontWeight.w600,
           color: black,
@@ -47,27 +53,27 @@ class AppTheme {
         iconTheme: const IconThemeData(color: black),
       ),
       textTheme: TextTheme(
-        displayLarge: GoogleFonts.poppins(
+        displayLarge: GoogleFonts.urbanist(
           fontSize: 32,
           fontWeight: FontWeight.w700,
           color: black,
         ),
-        headlineSmall: GoogleFonts.poppins(
+        headlineSmall: GoogleFonts.urbanist(
           fontSize: 18,
           fontWeight: FontWeight.w600,
           color: black,
         ),
-        titleLarge: GoogleFonts.poppins(
+        titleLarge: GoogleFonts.urbanist(
           fontSize: 16,
           fontWeight: FontWeight.w600,
           color: black,
         ),
-        bodyLarge: GoogleFonts.poppins(
+        bodyLarge: GoogleFonts.urbanist(
           fontSize: 16,
           fontWeight: FontWeight.w400,
           color: grey900,
         ),
-        bodyMedium: GoogleFonts.poppins(
+        bodyMedium: GoogleFonts.urbanist(
           fontSize: 14,
           fontWeight: FontWeight.w400,
           color: grey600,
@@ -93,11 +99,11 @@ class AppTheme {
           borderRadius: BorderRadius.circular(8),
           borderSide: const BorderSide(color: error),
         ),
-        hintStyle: GoogleFonts.poppins(
+        hintStyle: GoogleFonts.urbanist(
           fontSize: 14,
           color: grey500,
         ),
-        labelStyle: GoogleFonts.poppins(
+        labelStyle: GoogleFonts.urbanist(
           fontSize: 14,
           color: grey700,
         ),
@@ -110,7 +116,7 @@ class AppTheme {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),
-          textStyle: GoogleFonts.poppins(
+          textStyle: GoogleFonts.urbanist(
             fontSize: 16,
             fontWeight: FontWeight.w600,
           ),
@@ -119,7 +125,7 @@ class AppTheme {
       textButtonTheme: TextButtonThemeData(
         style: TextButton.styleFrom(
           foregroundColor: primary,
-          textStyle: GoogleFonts.poppins(
+          textStyle: GoogleFonts.urbanist(
             fontSize: 14,
             fontWeight: FontWeight.w600,
           ),
@@ -139,7 +145,7 @@ class AppTheme {
         backgroundColor: grey900,
         elevation: 0,
         centerTitle: false,
-        titleTextStyle: GoogleFonts.poppins(
+        titleTextStyle: GoogleFonts.urbanist(
           fontSize: 20,
           fontWeight: FontWeight.w600,
           color: white,

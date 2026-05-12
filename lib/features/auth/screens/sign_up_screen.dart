@@ -114,7 +114,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         title: Text(
           'Create Account',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          style: GoogleFonts.urbanist(fontWeight: FontWeight.w600),
         ),
         centerTitle: true,
         backgroundColor: AppTheme.primary,
@@ -241,7 +241,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Expanded(
                     child: Text(
                       'I agree to Terms & Conditions and Privacy Policy',
-                      style: GoogleFonts.poppins(fontSize: 12),
+                      style: GoogleFonts.urbanist(fontSize: 12),
                     ),
                   ),
                 ],
@@ -270,13 +270,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 children: [
                   Text(
                     'Already have an account? ',
-                    style: GoogleFonts.poppins(fontSize: 14),
+                    style: GoogleFonts.urbanist(fontSize: 14),
                   ),
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Text(
                       'Sign In',
-                      style: GoogleFonts.poppins(
+                      style: GoogleFonts.urbanist(
                         fontSize: 14,
                         fontWeight: FontWeight.w700,
                         color: AppTheme.primary,

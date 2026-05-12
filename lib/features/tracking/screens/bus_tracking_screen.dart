@@ -66,7 +66,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
         elevation: 0,
         title: Text(
           'Bus Tracking',
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.urbanist(
             fontSize: 18,
             fontWeight: FontWeight.w600,
             color: AppTheme.black,
@@ -126,7 +126,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                           const SizedBox(height: 16),
                           Text(
                             'Live Location',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.urbanist(
                               fontSize: 14,
                               fontWeight: FontWeight.w500,
                               color: AppTheme.grey600,
@@ -199,7 +199,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                         children: [
                           Text(
                             bus['id'],
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.urbanist(
                               fontSize: 12,
                               fontWeight: FontWeight.w600,
                               color:
@@ -209,7 +209,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                           const SizedBox(height: 4),
                           Text(
                             'Route: ${bus['route']}',
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.urbanist(
                               fontSize: 11,
                               fontWeight: FontWeight.w400,
                               color:
@@ -233,7 +233,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                             ),
                             child: Text(
                               bus['status'],
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
                                 color:
@@ -259,7 +259,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                 children: [
                   Text(
                     'Bus Details',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.black,
@@ -305,7 +305,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                   const SizedBox(height: 16),
                   Text(
                     'Status Information',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.black,
@@ -347,7 +347,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                                 currentBus['status'] == 'On Time'
                                     ? 'Bus is On Schedule'
                                     : 'Bus Running Late',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.urbanist(
                                   fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: AppTheme.black,
@@ -358,7 +358,7 @@ class _BusTrackingScreenState extends State<BusTrackingScreen>
                                 currentBus['status'] == 'On Time'
                                     ? 'Expected to arrive at ${currentBus['nextStop']} on time'
                                     : 'Approximately 15 minutes delayed',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.urbanist(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w400,
                                   color: AppTheme.grey600,
@@ -402,7 +402,7 @@ class _DetailRow extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.urbanist(
             fontSize: 13,
             fontWeight: FontWeight.w500,
             color: AppTheme.grey600,
@@ -410,7 +410,7 @@ class _DetailRow extends StatelessWidget {
         ),
         Text(
           value,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.urbanist(
             fontSize: 13,
             fontWeight: FontWeight.w600,
             color: AppTheme.black,

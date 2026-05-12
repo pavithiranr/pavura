@@ -15,30 +15,94 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
 
   final List<Map<String, dynamic>> trains = [
     {
-      'id': 'KA-150',
-      'name': 'Argo Parahyangan',
-      'line': 'Jakarta - Bandung',
+      'id': 'KJL',
+      'name': 'Kelana Jaya Line',
+      'line': 'LRT Kelana Jaya',
       'status': 'On Time',
-      'currentStation': 'Depok',
-      'nextStation': 'Bogor',
-      'departure': '08:30',
-      'arrival': '10:00',
-      'progress': 0.45,
-      'capacity': '320',
-      'occupancy': '85%',
+      'currentStation': 'KL Sentral',
+      'nextStation': 'Pasar Seni',
+      'departure': '08:32',
+      'arrival': '08:35',
+      'progress': 0.60,
+      'capacity': '800',
+      'occupancy': '65%',
+      'logo': 'assets/images/train_logos/KJL-icon 1.png',
+      'longLogo': 'assets/images/train_logos/KJL-Long-Logo 1.png',
     },
     {
-      'id': 'KA-200',
-      'name': 'Jabodetabek Line',
-      'line': 'Jakarta - Tangerang',
+      'id': 'KGL',
+      'name': 'Kajang Line',
+      'line': 'MRT Kajang',
+      'status': 'On Time',
+      'currentStation': 'Muzium Negara',
+      'nextStation': 'Pasar Seni',
+      'departure': '08:30',
+      'arrival': '08:34',
+      'progress': 0.40,
+      'capacity': '1200',
+      'occupancy': '45%',
+      'logo': 'assets/images/train_logos/KGL-icon 1.png',
+      'longLogo': 'assets/images/train_logos/KGL-Long-Logo 1.png',
+    },
+    {
+      'id': 'PYL',
+      'name': 'Putrajaya Line',
+      'line': 'MRT Putrajaya',
       'status': 'Delayed',
-      'currentStation': 'Sudirman',
-      'nextStation': 'Blok M',
-      'departure': '09:15',
-      'arrival': '09:45',
-      'progress': 0.25,
+      'currentStation': 'Tun Razak Exchange',
+      'nextStation': 'Conlay',
+      'departure': '08:40',
+      'arrival': '08:45',
+      'progress': 0.20,
+      'capacity': '1200',
+      'occupancy': '90%',
+      'logo': 'assets/images/train_logos/PYL-icon 1.png',
+      'longLogo': 'assets/images/train_logos/PYL-Long-Logo 1.png',
+    },
+    {
+      'id': 'AGL',
+      'name': 'Ampang Line',
+      'line': 'LRT Ampang',
+      'status': 'On Time',
+      'currentStation': 'Hang Tuah',
+      'nextStation': 'Plaza Rakyat',
+      'departure': '08:35',
+      'arrival': '08:38',
+      'progress': 0.75,
       'capacity': '800',
-      'occupancy': '92%',
+      'occupancy': '50%',
+      'logo': 'assets/images/train_logos/AGL-icon 1.png',
+      'longLogo': 'assets/images/train_logos/AGL-Long-Logo 1.png',
+    },
+    {
+      'id': 'MRL',
+      'name': 'Monorail Line',
+      'line': 'KL Monorail',
+      'status': 'On Time',
+      'currentStation': 'Bukit Bintang',
+      'nextStation': 'Imbi',
+      'departure': '08:33',
+      'arrival': '08:35',
+      'progress': 0.30,
+      'capacity': '200',
+      'occupancy': '95%',
+      'logo': 'assets/images/train_logos/MRL-icon 1.png',
+      'longLogo': 'assets/images/train_logos/MRL-Long-Logo 1.png',
+    },
+    {
+      'id': 'SPL',
+      'name': 'Sri Petaling Line',
+      'line': 'LRT Sri Petaling',
+      'status': 'On Time',
+      'currentStation': 'Bandar Tasik Selatan',
+      'nextStation': 'Sungai Besi',
+      'departure': '08:38',
+      'arrival': '08:41',
+      'progress': 0.50,
+      'capacity': '800',
+      'occupancy': '60%',
+      'logo': 'assets/images/train_logos/SPL-Long-Logo 1.png',
+      'longLogo': 'assets/images/train_logos/SPL-Long-Logo 1.png',
     },
   ];
 
@@ -53,7 +117,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
         elevation: 0,
         title: Text(
           'Train Tracking',
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.urbanist(
             fontSize: 18,
             fontWeight: FontWeight.w600,
             color: AppTheme.black,
@@ -71,13 +135,11 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    currentTrain['line'],
-                    style: GoogleFonts.poppins(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      color: AppTheme.grey600,
-                    ),
+                  Image.asset(
+                    currentTrain['longLogo'],
+                    height: 28,
+                    alignment: Alignment.centerLeft,
+                    fit: BoxFit.contain,
                   ),
                   const SizedBox(height: 16),
                   // Visual route
@@ -104,7 +166,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                               const SizedBox(height: 8),
                               Text(
                                 'Start',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.urbanist(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                   color: AppTheme.grey600,
@@ -145,7 +207,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                                 ),
                                 Text(
                                   '${(currentTrain['progress'] * 100).toStringAsFixed(0)}% complete',
-                                  style: GoogleFonts.poppins(
+                                  style: GoogleFonts.urbanist(
                                     fontSize: 11,
                                     fontWeight: FontWeight.w500,
                                     color: AppTheme.primary,
@@ -172,7 +234,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                               const SizedBox(height: 8),
                               Text(
                                 'End',
-                                style: GoogleFonts.poppins(
+                                style: GoogleFonts.urbanist(
                                   fontSize: 12,
                                   fontWeight: FontWeight.w500,
                                   color: AppTheme.grey600,
@@ -192,7 +254,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                         ),
                         child: Text(
                           'Current: ${currentTrain['currentStation']} → Next: ${currentTrain['nextStation']}',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.urbanist(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                             color: AppTheme.primary,
@@ -232,19 +294,17 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            train['id'],
-                            style: GoogleFonts.poppins(
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color:
-                                  isSelected ? AppTheme.white : AppTheme.black,
-                            ),
+                          Image.asset(
+                            train['logo'],
+                            height: 24,
+                            alignment: Alignment.centerLeft,
+                            fit: BoxFit.contain,
+                            color: isSelected ? Colors.white : null,
                           ),
                           const SizedBox(height: 4),
                           Text(
                             train['name'],
-                            style: GoogleFonts.poppins(
+                            style: GoogleFonts.urbanist(
                               fontSize: 11,
                               fontWeight: FontWeight.w500,
                               color:
@@ -272,7 +332,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                             ),
                             child: Text(
                               train['status'],
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w600,
                                 color:
@@ -300,7 +360,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                 children: [
                   Text(
                     'Train Information',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.black,
@@ -344,7 +404,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                   const SizedBox(height: 16),
                   Text(
                     'Schedule',
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: 16,
                       fontWeight: FontWeight.w600,
                       color: AppTheme.black,
@@ -366,7 +426,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                           children: [
                             Text(
                               'Departure',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                                 color: AppTheme.grey600,
@@ -375,7 +435,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                             const SizedBox(height: 4),
                             Text(
                               currentTrain['departure'],
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: AppTheme.black,
@@ -393,7 +453,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                           children: [
                             Text(
                               'Arrival',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w500,
                                 color: AppTheme.grey600,
@@ -402,7 +462,7 @@ class _TrainTrackingScreenState extends State<TrainTrackingScreen> {
                             const SizedBox(height: 4),
                             Text(
                               currentTrain['arrival'],
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: AppTheme.black,
@@ -442,7 +502,7 @@ class _DetailRow extends StatelessWidget {
       children: [
         Text(
           label,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.urbanist(
             fontSize: 13,
             fontWeight: FontWeight.w500,
             color: AppTheme.grey600,
@@ -450,7 +510,7 @@ class _DetailRow extends StatelessWidget {
         ),
         Text(
           value,
-          style: GoogleFonts.poppins(
+          style: GoogleFonts.urbanist(
             fontSize: 13,
             fontWeight: FontWeight.w600,
             color: AppTheme.black,

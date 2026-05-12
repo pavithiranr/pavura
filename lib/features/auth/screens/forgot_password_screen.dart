@@ -72,7 +72,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       appBar: AppBar(
         title: Text(
           'Reset Password',
-          style: GoogleFonts.poppins(fontWeight: FontWeight.w600),
+          style: GoogleFonts.urbanist(fontWeight: FontWeight.w600),
         ),
         backgroundColor: AppTheme.primary,
         foregroundColor: Colors.white,
@@ -86,7 +86,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             const SizedBox(height: 24),
             Text(
               'Forgot your password?',
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.urbanist(
                 fontSize: 24,
                 fontWeight: FontWeight.w700,
               ),
@@ -94,7 +94,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             const SizedBox(height: 8),
             Text(
               "Don't worry! Enter your email and we'll send you a link to reset your password.",
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.urbanist(
                 fontSize: 14,
                 fontWeight: FontWeight.w400,
                 color: Colors.grey[600],
@@ -105,7 +105,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             // Email field
             Text(
               'Email Address',
-              style: GoogleFonts.poppins(
+              style: GoogleFonts.urbanist(
                 fontSize: 13,
                 fontWeight: FontWeight.w600,
               ),
@@ -115,10 +115,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
               enabled: !_isEmailSent,
-              style: GoogleFonts.poppins(),
+              style: GoogleFonts.urbanist(),
               decoration: InputDecoration(
                 hintText: 'your@email.com',
-                hintStyle: GoogleFonts.poppins(color: Colors.grey),
+                hintStyle: GoogleFonts.urbanist(color: Colors.grey),
                 prefixIcon: const Icon(Icons.email_outlined),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8),
@@ -174,7 +174,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                             )
                             : Text(
                               'Send Reset Link',
-                              style: GoogleFonts.poppins(
+                              style: GoogleFonts.urbanist(
                                 fontSize: 16,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.white,
@@ -202,7 +202,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     Expanded(
                       child: Text(
                         'Check your email for the reset link',
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.urbanist(
                           fontSize: 13,
                           color: Colors.green[700],
                         ),

@@ -121,7 +121,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Text(
                     'Sign In To Pavura',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: 28,
                       fontWeight: FontWeight.w700,
                       color: Colors.white,
@@ -131,7 +131,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   Text(
                     'Your transport journey starts here',
                     textAlign: TextAlign.center,
-                    style: GoogleFonts.poppins(
+                    style: GoogleFonts.urbanist(
                       fontSize: 14,
                       fontWeight: FontWeight.w400,
                       color: Colors.white.withValues(alpha: 0.8),
@@ -172,7 +172,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         onPressed: () {},
                         child: Text(
                           'Remember me',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.urbanist(
                             fontSize: 13,
                             fontWeight: FontWeight.w400,
                             color: Colors.white,
@@ -190,7 +190,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         child: Text(
                           'Forgot Password?',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.urbanist(
                             fontSize: 13,
                             fontWeight: FontWeight.w600,
                             color: Colors.white,
@@ -237,7 +237,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                     children: [
                                       Text(
                                         'Sign In',
-                                        style: GoogleFonts.poppins(
+                                        style: GoogleFonts.urbanist(
                                           fontSize: 16,
                                           fontWeight: FontWeight.w600,
                                           color: AppTheme.primary,
@@ -269,7 +269,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Text(
                           'Or',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.urbanist(
                             fontSize: 13,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
@@ -305,7 +305,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       Text(
                         "Don't have an account? ",
-                        style: GoogleFonts.poppins(
+                        style: GoogleFonts.urbanist(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
@@ -322,7 +322,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         child: Text(
                           'Sign Up',
-                          style: GoogleFonts.poppins(
+                          style: GoogleFonts.urbanist(
                             fontSize: 14,
                             fontWeight: FontWeight.w700,
                             color: Colors.white,
@@ -355,7 +355,7 @@ class _SignInScreenState extends State<SignInScreen> {
       alignment: Alignment.centerLeft,
       child: Text(
         text,
-        style: GoogleFonts.poppins(
+        style: GoogleFonts.urbanist(
           fontSize: 13,
           fontWeight: FontWeight.w600,
           color: Colors.white,
@@ -375,10 +375,10 @@ class _SignInScreenState extends State<SignInScreen> {
     return TextField(
       controller: controller,
       obscureText: isPassword && !isPasswordVisible,
-      style: GoogleFonts.poppins(color: Colors.black87),
+      style: GoogleFonts.urbanist(color: Colors.black87),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle: GoogleFonts.poppins(color: Colors.grey, fontSize: 14),
+        hintStyle: GoogleFonts.urbanist(color: Colors.grey, fontSize: 14),
         prefixIcon: Icon(icon, color: AppTheme.grey600),
         suffixIcon:
             isPassword
